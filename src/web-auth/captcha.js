@@ -335,11 +335,11 @@ function handleCaptchaProvider(element, options, challenge, done) {
           language: options.lang,
           doneCallback: function (solution) {
             setValue(solution);
-            done(solution)
+            done(null, solution)
           },
           errorCallback: function (error) {
             setValue();
-            done(error)
+            done(null, error)
           }
         });
         done();
