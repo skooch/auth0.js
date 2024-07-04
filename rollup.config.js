@@ -9,7 +9,7 @@ import { argv } from 'yargs';
 import pkg from './package.json';
 import createApp from './scripts/oidc-provider';
 
-const isProduction = argv.prod === true;
+const isProduction = true;
 const OUTPUT_PATH = 'dist';
 
 const getPlugins = prod => [
