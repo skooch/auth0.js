@@ -204,25 +204,7 @@ function injectCaptchaScript(opts, callback, setValue, done) {
       callback();
     };
     if (opts.provider === FRIENDLY_CAPTCHA_PROVIDER) {
-      attributes['onload'] = () => {
-        const myWidget = document.querySelector(".frc-captcha");
-        const myButton = document.getElementById("my-button");
-
-        myWidget.addEventListener("frc:widget.complete", function(event) {
-            console.log("Widget was completed! Response:", event.detail.response);
-            myButton.disabled = false;
-        });
-
-        myWidget.addEventListener("frc:widget.error", function(event) {
-            console.error("Widget ran into an error:", event.detail.error);
-            myButton.disabled = true;
-        });
-
-        myWidget.addEventListener("frc:widget.expired", function(event) {
-            console.warn("The widget expired because the user waited too long");
-            myButton.disabled = true;
-        });
-      }
+      attributes['onload'] = window[callbackName];
     }
   }
   loadScript(scriptSrc, attributes);
